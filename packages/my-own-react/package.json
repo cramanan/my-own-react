@@ -1,0 +1,19 @@
+{
+    "name": "my-own-react",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cramanan/my-own-react.git"
+    },
+    "author": "cramanan",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/cramanan/my-own-react/issues"
+    },
+    "homepage": "https://github.com/cramanan/my-own-react#readme",
+    "description": ""
+}
