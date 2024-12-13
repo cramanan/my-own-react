@@ -1,5 +1,4 @@
-export const ELEMENT_TYPE = Symbol.for("my-own-react.element");
-export const FRAGMENT_TYPE = Symbol.for("my-own-react.fragment");
+import { ELEMENT_TYPE, FRAGMENT_TYPE } from "shared/Symbols";
 
 function hasValidKey(config) {
     return config.key !== undefined;
