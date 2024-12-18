@@ -1,7 +1,10 @@
 {
-    "name": "my-own-react",
+    "name": "my-own-react-dom",
     "version": "0.0.1",
     "main": "index.js",
+    "peerDependencies": {
+        "my-own-react": "0.0.1"
+    },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
