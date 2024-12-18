@@ -17,4 +17,9 @@ function useState(initial) {
     return dispatcher.useState(initial);
 }
 
-export { useState };
+function useReducer(reducer, initial) {
+    const dispatcher = resolveDispatcher();
+    return dispatcher.useReducer(reducer, initial);
+}
+
+export { useState, useReducer };

@@ -168,7 +168,7 @@ const translateChildren = (child) => {
 };
 
 function wrapInArray(children) {
-    if (!children) return [];
+    if (children === null || children === undefined) return [];
     if (!Array.isArray(children)) return [children];
     return children.flat();
 }
@@ -193,7 +193,7 @@ function updateHostComponent(fiber) {
 }
 
 function reconcileChildren(WorkInProgress, children) {
-    if (!children) children = [];
+    if (!children === null || children === undefined) children = [];
 
     let index = 0;
     let oldFiber = WorkInProgress.alternate && WorkInProgress.alternate.child;
@@ -276,8 +276,20 @@ function useState(initial) {
     return [hook.state, setState];
 }
 
+function useReducer(reducer, initialState) {
+    const [state, setState] = useState(initialState);
+
+    function dispatch(action) {
+        const nextState = reducer(state, action);
+        setState(nextState);
+    }
+
+    return [state, dispatch];
+}
+
 const DOMDispatcher = {
     useState,
+    useReducer,
 };
 
 function pushDispatcher(dispatcher) {
