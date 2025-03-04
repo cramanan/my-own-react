@@ -16,9 +16,9 @@ JSX or JavaScript XML is a special syntax that allow developer to write JavaScri
 const element = <h1>Hello World<h1>
 ```
 
-In order to use JSX, you first have to transcomile it using [Babel](https://babeljs.io/docs/) and its [@babel/plugin-transform-react-jsx](https://babeljs.io/docs/babel-plugin-transform-react-jsx) plugin.
+In order to use JSX, we first have to transcomile it using [Babel](https://babeljs.io/docs/) and its [@babel/plugin-transform-react-jsx](https://babeljs.io/docs/babel-plugin-transform-react-jsx) plugin.
 
-... , 3 elements:
+In the latest version, this Babel plugin needs 3 exported elements:
 
 -   The `jsx` function
 -   The `jsxs` function
@@ -42,3 +42,16 @@ const element = _jsx("h1", {
     children: "Hello World",
 });
 ```
+
+As seen above, these elements needs to be exported in a file called : `jsx-runtime.js` .
+
+## JSX to JS object
+
+The `jsx` function takes up to 3 arguments:
+
+```js
+function jsx(tag, config)
+```
+
+-   tag: a string that represents an HTML tag: "div", "h1"
+-   config: an object. This parameters will be separated into `props` and `children`
