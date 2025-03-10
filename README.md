@@ -54,4 +54,46 @@ function jsx(tag, config)
 ```
 
 -   tag: a string that represents an HTML tag: "div", "h1"
--   config: an object. This parameters will be separated into `props` and `children`
+-   config: an object. This parameter will be separated into `props` and `children`
+
+## Shared Internals
+
+React exports its internals as an object so that other libraries using React can push datas into that object:
+
+Example: React's Dispatcher for Hooks:
+
+```js
+// react/src/SharedInternals.js
+const ReactSharedInternals = {
+  H: null,
+  ...
+};
+
+export default ReactSharedInternals;
+```
+
+```js
+// react-dom (react-reconciler)
+// The shared package serves as a bridge
+import ReactSharedInternals from "shared/ReactSharedInternals";
+
+function pushDispatcher() {
+    const prevDispatcher = ReactSharedInternals.H;
+    ReactSharedInternals.H = ContextOnlyDispatcher; // This is where React Hooks are defined
+    if (prevDispatcher === null) {
+        return ContextOnlyDispatcher;
+    } else {
+        return prevDispatcher;
+    }
+}
+```
+
+You can then reference hooks like this:
+
+```jsx
+import { useState } from "react";
+```
+
+## Rendering process
+
+For this part, I mainly used [Pomber's "Build your own React"](https://pomb.us/build-your-own-react/)
